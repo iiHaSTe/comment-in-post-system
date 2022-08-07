@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Can i fly ??",
+    "content": "well i see my bird fly first time :)",
+    "likes": 10,
+    "desLikes": 0,
+    "comments": [
+      {
+        "user": "iiHaSTe",
+        "content": "well................\nthat's awsome but why are you need to fly ???????",
+        "likes": 5,
+        "desLikes": 0
+      }
+    ]
+  }
+]
