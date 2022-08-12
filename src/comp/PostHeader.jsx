@@ -1,19 +1,11 @@
 import { Component } from "react";
-import CommentComp, { Comment } from "./Comment";
+import CommentComp from "./Comment";
 import LikeButton from "./LikeButton";
 import { Form, InputGroup, Button } from "react-bootstrap";
 import { ArrowUp, ArrowDown } from "react-bootstrap-icons";
 
-type Post = {
-  name: string;
-  content: string;
-  likes: number;
-  desLikes: number;
-  comments: Array<Comment>;
-};
-
 export default class PostComp extends Component {
-  constructor(props: Post) {
+  constructor(props) {
     super(props);
     this.state = {
       likes: props.likes,
@@ -31,30 +23,30 @@ export default class PostComp extends Component {
       this.commentContentChangeHandel.bind(this);
   }
 
-  likeHandel(): void {
+  likeHandel() {
     if (this.state.liked) {
-      this.setState((s: Object) => ({
+      this.setState((s) => ({
         likes: s.likes - 1,
         liked: false,
       }));
       return;
     }
-    this.setState((s: Object) => ({
+    this.setState((s) => ({
       likes: s.likes + 1,
       liked: true,
       desLikes: s.hited ? s.desLikes - 1 : s.desLikes,
       hited: false,
     }));
   }
-  desLikeHandel(): void {
+  desLikeHandel() {
     if (this.state.hited) {
-      this.setState((s: Object) => ({
+      this.setState((s) => ({
         desLikes: s.desLikes - 1,
         hited: false,
       }));
       return;
     }
-    this.setState((s: Object) => ({
+    this.setState((s) => ({
       likes: s.liked ? s.likes - 1 : s.likes,
       liked: false,
       desLikes: s.desLikes + 1,
@@ -62,16 +54,16 @@ export default class PostComp extends Component {
     }));
   }
 
-  commentSender(): void {
+  commentSender() {
     if (this.state.commentContent == "") return;
     const name = prompt("your name: ");
-    const comment: Comment = {
+    const comment = {
       user: name,
       content: this.state.commentContent,
       likes: 0,
       desLikes: 0,
     };
-    this.setState((s: Object) => {
+    this.setState((s) => {
       s.comments.push(comment);
       return {
         commentContent: "",
@@ -79,13 +71,13 @@ export default class PostComp extends Component {
       };
     });
   }
-  commentContentChangeHandel(e): void {
+  commentContentChangeHandel(e) {
     this.setState({
       commentContent: e.target.value,
     });
   }
 
-  render(): any {
+  render() {
     return (
       <div className="container">
         <div>
@@ -123,7 +115,7 @@ export default class PostComp extends Component {
 
         <div className="container mt-5">
           {/* loop on all comments and show them */}
-          {this.state.comments.map((i: Comment) => {
+          {this.state.comments.map((i) => {
             return (
               <CommentComp
                 user={i.user}

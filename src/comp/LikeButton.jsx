@@ -2,17 +2,12 @@ import { Component } from "react";
 import { Form, InputGroup, Button } from "react-bootstrap";
 import { ArrowUp, ArrowDown } from "react-bootstrap-icons";
 
-type Props = {
-  state: Object;
-  onLikeClick: Function,
-  onDesLikeClick: Function
-}
 
 export default class LikeButton extends Component {
-  constructor(props: Props){
+  constructor(props){
     super(props)
   }
-  render(): any {
+  render() {
     return (
       <div className="mt-2 mb-3 mx-4">
         <Button
